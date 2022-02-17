@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.4)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -20,6 +20,7 @@ HunterGate(
         SHA1 "95c47c92f68edb091b5d6d18924baabe02a6962a"
 )
 
+# TODO: rename project and delete this comment
 project(lab5)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
@@ -29,17 +30,12 @@ hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
 add_library(${PROJECT_NAME} STATIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Stack_1.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Stack_2.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/Stack_1.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/Stack_2.cpp
         )
+
 add_executable(demo
         ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Stack_1.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/Stack_2.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/sources/Stack_1.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/sources/Stack_2.cpp
         )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -63,8 +59,9 @@ if(BUILD_COVERAGE)
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tools/coverage/cmake")
   find_package(codecov)
   string(APPEND CMAKE_CXX_FLAGS " --coverage")
-  add_coverage(${PROJECT_NAME})
+  #add_coverage(${PROJECT_NAME})
   add_coverage(tests)
+  list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
   coverage_evaluate()
 endif()
 
