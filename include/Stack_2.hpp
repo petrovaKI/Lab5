@@ -75,7 +75,7 @@ My_Stack_2<T>::~My_Stack_2()
 {
   while (peak_elem != nullptr)
   {
-    Node<T> *p = peak_elem; // сделать копию из p
+    Node_2<T> *p = peak_elem; // сделать копию из p
     peak_elem = peak_elem->prev; // перейти на следующий элемент стека
     delete p; // удалить память, выделенную под предыдущий элемент
   }
