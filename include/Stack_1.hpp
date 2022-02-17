@@ -71,8 +71,9 @@ void My_Stack<T>::pop()
     auto* cur = peak_elem;
     peak_elem = peak_elem->prev;  //перемещаем указатель на прерыдущий элемент
     delete cur;
+  }else{
+    throw std::runtime_error("Stack is empty! Can not pop any element!");
   }
-  else {throw std::runtime_error("Stack is empty! Can not pop any element!");}
 }
 template<typename T>
 const T &My_Stack<T>::head() const
