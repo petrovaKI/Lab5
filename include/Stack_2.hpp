@@ -26,7 +26,7 @@ class My_Stack_2
   My_Stack_2()= default;//конструктор по умолчанию
   My_Stack_2(const My_Stack_2 &stack) = delete; //запрет неявного копирования
   My_Stack_2(My_Stack_2&& stack) noexcept = default; //конструктор перемещения
-  auto operator=(My_Stack_2&& stack)  noexcept -> class My_Stack_2& = default; //оператор перемещения
+  auto operator=(My_Stack_2&& stack)  noexcept -> class My_Stack_2& = default;
   auto operator=(My_Stack_2& stack) = delete; //запрет копирования
   template <typename ... Args>
   void push_emplace(Args&& ... value);
