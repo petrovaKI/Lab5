@@ -1,9 +1,14 @@
 // Copyright 2021 Petrova Kseniya <ksyushki5@yandex.ru>
 
-#ifndef TEMPLATE_STACK_2_H
-#define TEMPLATE_STACK_2_H
-//некопируемый перемещаемый шаблон класса Stack для некопируемых перемещаемых типов
+#ifndef INCLUDE_STACK_2_HPP_
+#define INCLUDE_STACK_2_HPP_
+#pragma once
+#include <utility>
+//некопируемый перемещаемый шаблон класса Stack для
+//некопируемых перемещаемых типов
+
 //реализация с помощью односвязного списка
+
 //создаём узел
 template <typename T>
 struct Node_2
@@ -65,4 +70,4 @@ T My_Stack_2<T>::pop()
   }
 }
 
-#endif  // TEMPLATE_STACK_2_H
+#endif  // INCLUDE_STACK_2_HPP_

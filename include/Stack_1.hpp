@@ -1,10 +1,11 @@
 // Copyright 2021 Petrova Kseniya <ksyushki5@yandex.ru>
 
-#ifndef INCLUDE_EXAMPLE_HPP_
+#ifndef  INCLUDE_STACK_1_HPP_
 #define INCLUDE_EXAMPLE_HPP_
-
+#pragma once
 #include <stdexcept>
 #include <iostream>
+#include <utility>
 //реализация с помощью односвязного списка
 //создаём узел
 template <typename T>
@@ -26,7 +27,7 @@ class My_Stack
   My_Stack(const My_Stack& stack) = delete; //запрет неявного копирования
   My_Stack(My_Stack&& stack)  noexcept = default; //конструктор перемещения
   auto operator=(My_Stack& stack) = delete; //запрет копирования
-  auto operator=(My_Stack&& stack)  noexcept -> My_Stack& = default; //оператор перемещения
+  auto operator=(My_Stack&& stack)  noexcept -> My_Stack& = default;
   void push(T&& val); //помещение элемента в стек (rvalue)
   void push(const T& val); //(lvalue)
   void pop(); //извлечение элемента из стека
@@ -71,8 +72,9 @@ void My_Stack<T>::pop()
     peak_elem = peak_elem->prev;  //перемещаем указатель на прерыдущий элемент
     delete cur;
   }
-  else
-    throw std::runtime_error("Stack is empty! Can not pop any element!");;//в противном случае - ошибка
+  else {
+    throw std::runtime_error("Stack is empty! Can not pop any element!");
+  }
 }
 template<typename T>
 const T &My_Stack<T>::head() const
@@ -94,4 +96,4 @@ My_Stack<T>::~My_Stack()
   }
   peak_elem = nullptr; // поправить вершину стека
 }
-#endif // INCLUDE_EXAMPLE_HPP_
+#endif //  INCLUDE_STACK_1_HPP_
