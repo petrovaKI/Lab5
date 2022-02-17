@@ -33,6 +33,7 @@ class My_Stack_2
   void push(T&& value);
   const T& head() const;
   T pop();
+  ~My_Stack_2();
 };
 
 template<typename T>
@@ -69,5 +70,15 @@ T My_Stack_2<T>::pop()
     throw std::runtime_error("Stack is empty! Can not pop any element!");
   }
 }
-
+template<typename T>
+My_Stack_2<T>::~My_Stack_2()
+{
+  while (peak_elem != nullptr)
+  {
+    Node<T> *p = peak_elem; // сделать копию из p
+    peak_elem = peak_elem->prev; // перейти на следующий элемент стека
+    delete p; // удалить память, выделенную под предыдущий элемент
+  }
+  peak_elem = nullptr; // поправить вершину стека
+}
 #endif  // INCLUDE_STACK_2_HPP_

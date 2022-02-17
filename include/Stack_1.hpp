@@ -83,15 +83,11 @@ const T &My_Stack<T>::head() const
 template<typename T>
 My_Stack<T>::~My_Stack()
 {
-  Node<T>* p;
-  Node<T>* p2;
-
-  p = peak_elem;
-  while (p != nullptr)
+  while (peak_elem != nullptr)
   {
-    p2 = p; // сделать копию из p
-    p = p->prev; // перейти на следующий элемент стека
-    delete p2; // удалить память, выделенную под предыдущий элемент
+    Node<T> *p = peak_elem; // сделать копию из p
+    peak_elem = peak_elem->prev; // перейти на следующий элемент стека
+    delete p; // удалить память, выделенную под предыдущий элемент
   }
   peak_elem = nullptr; // поправить вершину стека
 }
