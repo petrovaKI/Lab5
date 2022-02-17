@@ -1,7 +1,7 @@
 // Copyright 2021 Petrova Kseniya <ksyushki5@yandex.ru>
 
 #ifndef  INCLUDE_STACK_1_HPP_
-#define INCLUDE_EXAMPLE_HPP_
+#define INCLUDE_STACK_1_HPP_
 #pragma once
 #include <stdexcept>
 #include <iostream>
