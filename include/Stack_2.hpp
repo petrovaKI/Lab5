@@ -40,8 +40,8 @@ template<typename T>
 template<typename ...Args>
 void My_Stack_2<T>::push_emplace(Args && ... value)
 {
-  auto* current = peak_elem;
-  peak_elem = new Node_2<T>{{std::forward<Args>(value)...}, current};
+  auto* cur = peak_elem;
+  peak_elem = new Node_2<T>{{std::forward<Args>(value)...}, cur};
 }
 
 template<typename T>

@@ -53,7 +53,7 @@ void My_Stack<T>::print(){
 template<typename T>
 void My_Stack<T>::push(T &&val)
 {
-  auto* cur = new Node<T>{std::forward<T>(val), peak_elem};
+  auto* cur = new Node<T>{val, peak_elem};
   peak_elem = cur;
 }
 
@@ -85,7 +85,7 @@ My_Stack<T>::~My_Stack()
 {
   while (peak_elem != nullptr)
   {
-    Node<T> *p = peak_elem; // сделать копию из p
+    Node<T> *p = peak_elem;
     peak_elem = peak_elem->prev; // перейти на следующий элемент стека
     delete p; // удалить память, выделенную под предыдущий элемент
   }
